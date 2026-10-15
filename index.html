@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sidang Negara: Hubungan Antar Lembaga</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F6F8;--surf:#FFFFFF;--ink:#1B2233;--mut:#5A6478;--line:#D9DDE5;--red:#C8102E;--ok:#1E7B4F;--okbg:#E3F4EA;--bad:#B42318;--badbg:#FCE8E6;--me:#FFF1C9;--gold:#8A6100;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121722;--surf:#1B2231;--ink:#EEF1F6;--mut:#9AA5BA;--line:#2D3649;--red:#E5384F;--ok:#5CCB92;--okbg:#14301F;--bad:#FF8A80;--badbg:#3A1A18;--me:#3F3510;--gold:#E8C560}}
+:root[data-theme="dark"]{--bg:#121722;--surf:#1B2231;--ink:#EEF1F6;--mut:#9AA5BA;--line:#2D3649;--red:#E5384F;--ok:#5CCB92;--okbg:#14301F;--bad:#FF8A80;--badbg:#3A1A18;--me:#3F3510;--gold:#E8C560}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:16px/1.5 "Public Sans",system-ui,sans-serif}
+main{max-width:1060px;margin:0 auto;padding:16px 14px 40px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;line-height:1.15;margin:0}
+h1{font-size:clamp(1.5rem,5vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.15rem;font-weight:800}h3{font-size:1rem;font-weight:800;margin-bottom:4px}
+p{margin:.4em 0}.mut{color:var(--mut)}.sm{font-size:.85rem}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.hd{border-bottom:6px solid var(--red);padding-bottom:10px;margin-bottom:12px}
+.flag{height:9px;width:48px;border-radius:2px;background:linear-gradient(var(--red) 50%,var(--surf) 50%);border:1px solid var(--line);margin-bottom:8px}
+.btn{background:var(--red);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:600}
+.btn.alt{background:var(--surf);color:var(--ink);border:1.5px solid var(--line)}.btn:disabled{opacity:.45;cursor:default}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cols{display:grid;gap:14px;margin-top:12px}
+@media(min-width:900px){.cols{grid-template-columns:1.25fr .75fr;align-items:start}}
+input[type=text],select{border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;width:100%}
+select{width:auto}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.stp{font-size:.78rem;border:1px solid var(--line);border-radius:99px;padding:2px 10px;color:var(--mut)}
+.stp.on{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}.stp.done{background:var(--bg)}
+#chat{height:min(46vh,420px);overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:2px}
+.badge{display:inline-block;color:#fff;border-radius:6px;padding:1px 8px;font-size:.75rem;font-weight:600}
+.msg b{font-size:.9rem}.msg.mine{background:var(--me);border-radius:10px;padding:4px 6px}
+.bub{margin-top:2px;padding:8px 11px;border-radius:4px 12px 12px 12px;background:var(--bg);border:1px solid var(--line)}
+.bub.arg{border-left:4px solid var(--red)}.bub.q{border-left:4px solid var(--gold);font-style:italic}
+.sys{text-align:center;font-size:.82rem;color:var(--mut);background:var(--bg);border-radius:8px;padding:5px 8px}
+.opt{display:block;width:100%;text-align:left;background:var(--surf);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:7px}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.role{display:grid;gap:2px;width:100%;text-align:left;background:var(--surf);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:8px}
+.role:disabled{opacity:.5}.role small{color:var(--mut)}
+.fb{margin-top:10px;padding:10px;border-radius:10px;border-left:5px solid}.fb.k2{background:var(--okbg);border-color:var(--ok)}.fb.k1{background:var(--me);border-color:var(--gold)}.fb.k0{background:var(--badbg);border-color:var(--bad)}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tab{flex:1;border:1.5px solid var(--line);background:var(--surf);border-radius:10px;padding:7px;font-weight:600}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rr{padding:7px 0;border-top:1px solid var(--line);font-size:.92rem}.rr:first-child{border-top:0}
+.rk{display:grid;grid-template-columns:24px 1fr auto;gap:8px;padding:6px 4px;border-top:1px solid var(--line);font-size:.92rem}.rk.me{background:var(--me);border-radius:8px}
+.vd{border:2px solid var(--red);margin-bottom:12px}.vd .big{font:800 1.4rem "Bricolage Grotesque",sans-serif;color:var(--red)}
+.note{background:var(--badbg);border-left:5px solid var(--bad);padding:10px 12px;border-radius:10px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+<main>
+<header class="hd"><div class="flag"></div><h1>Sidang Negara: Simulasi</h1><div id="head" class="sm mut"></div></header>
+<div id="ctl"></div><div id="vd"></div>
+<div class="cols">
+<section><div class="card"><div id="chat" aria-live="polite"></div></div><div id="play" style="margin-top:12px"></div></section>
+<aside><div class="tabs" id="tabs" role="tablist"></div><div class="card" id="side"></div></aside>
+</div>
+<p class="sm mut" style="margin-top:20px"><a href="#" id="gl" class="mut">Masuk sebagai guru</a></p>
+</main>
+<script>
+/* ===== PENGATURAN: ISI DULU SEBELUM DIUNGGAH ===== */
+const FB={apiKey:"ISI_API_KEY",authDomain:"ISI.firebaseapp.com",projectId:"ISI",storageBucket:"ISI.appspot.com",messagingSenderId:"ISI",appId:"ISI"};
+const GURU_PIN="ganti-pin-guru"; // PIN untuk membuka panel guru
+/* ================================================= */
+const QS=['Apa dasar hukum dari dalil Saudara?','Bagaimana pembuktian Saudara atas hal itu?','Apa dampak nyata bagi warga negara jika dalil Saudara diterima?','Apakah ada cara lain yang lebih ringan atau lebih sesuai prosedur?','Lembaga mana yang sebenarnya berwenang atas hal ini?'];
+const PAL=['#9B1C31','#1F5FA8','#2E7D5B','#A8651A','#5B3FA0','#0E7490','#7C4A2D','#475569'];
+const OB=['O','Pengamat / Pers',99,'Mengikuti sidang, mencatat, dan berkomentar di ruang sidang.',null];
+const C=[
+{id:'mkdpr',t:'Pemakzulan Presiden: DPR, MK, dan MPR',f:'MK',
+ ring:'DPR menyatakan pendapat bahwa Presiden (fiktif) melakukan pelanggaran hukum berupa penyuapan, lalu mengajukannya ke Mahkamah Konstitusi. Dasarnya satu keterangan saksi dan sebuah rekaman yang keasliannya dipersoalkan. Presiden membantah. MK harus memutus pendapat DPR itu; jika terbukti, prosesnya berlanjut ke MPR.',
+ dasar:'Pasal 7A dan 7B UUD 1945 (usul pemberhentian Presiden: DPR, MK, lalu MPR); Pasal 24C ayat (2) UUD 1945.',
+ R:[['H','Hakim Konstitusi',3,'Memeriksa pendapat DPR berdasarkan alat bukti dan memutus.',null],
+ ['DPR','Perwakilan DPR',1,'Menyampaikan pendapat DPR dan membuktikannya di MK.',[['Pasal 7A UUD 1945 membolehkan usul pemberhentian bila Presiden terbukti melakukan penyuapan. Pendapat ini diputuskan paripurna DPR dengan kuorum dan persetujuan dua pertiga, lalu diajukan ke MK.',2],['Rakyat marah dan menuntut Presiden diberhentikan, jadi MK harus segera mengabulkan.',1],['DPR berwenang memberhentikan Presiden langsung tanpa melalui MK dan MPR.',0]]],
+ ['KP','Kuasa Presiden',1,'Membela Presiden atas pendapat DPR.',[['Pendapat DPR harus dibuktikan secara hukum di MK. Unsur penyuapan belum terbukti dan keaslian rekaman dipersoalkan, jadi prosesnya tidak boleh sekadar pertimbangan politik.',2],['Presiden dipilih langsung oleh rakyat sehingga tidak boleh diberhentikan.',1],['Presiden dapat membubarkan DPR untuk menghentikan proses ini.',0]]],
+ ['AHL','Ahli Hukum Tata Negara',1,'Menjelaskan mekanisme antar lembaga dalam pemberhentian Presiden.',[['MK menguji aspek hukum pendapat DPR, sedangkan keputusan akhir pemberhentian ada di MPR yang bersifat politik. Tiap lembaga memegang tahap berbeda agar saling mengawasi.',2],['Pemakzulan adalah mekanisme langka yang harus dilakukan hati-hati.',1],['MK dapat langsung memberhentikan Presiden bila pendapat DPR terbukti.',0]]],
+ ['SAK','Saksi (Staf Sekretariat Negara)',1,'Memberi kesaksian atas apa yang dialami sendiri.',[['Saya hadir dan menyaksikan pertemuan itu. Keterangan saya sesuai dengan catatan resmi pertemuan, dan saya tidak melihat penyerahan uang.',2],['Saya hanya bertugas administrasi sehingga tidak banyak tahu.',1],['Saya membaca di berita bahwa Presiden menerima uang.',0]]],OB],
+ ST:[['Pembukaan sidang',[],'Hakim membuka sidang dan memeriksa kedudukan para pihak.'],['Pendapat DPR',['DPR'],'DPR menyampaikan pendapat dan buktinya.'],['Jawaban Presiden',['KP'],'Kuasa Presiden menjawab pendapat DPR.'],['Ahli dan saksi',['AHL','SAK','DPR','KP'],'Ahli dan saksi memberi keterangan; para pihak menanggapi.'],['Musyawarah dan putusan',[],'Hakim memberikan suara.']],
+ Q:['H'],V:['H'],VO:['Pendapat DPR terbukti (diteruskan ke DPR lalu MPR)','Pendapat DPR tidak terbukti (ditolak)','Permohonan tidak dapat diterima (syarat formal tidak terpenuhi)'],ID:1,
+ W:'Paling berdasar: pendapat DPR tidak terbukti, karena buktinya lemah. Pemberhentian Presiden melewati tiga lembaga: DPR menyatakan pendapat, MK memutus aspek hukumnya, dan MPR memutuskan pemberhentian. DPR tidak bisa memberhentikan Presiden sendiri, dan Presiden tidak bisa membubarkan DPR.'},
+{id:'sk',t:'Sengketa Kewenangan: DPD melawan DPR',f:'MK',
+ ring:'DPR dan Presiden membahas RUU Pemekaran Daerah (fiktif) tanpa melibatkan DPD sejak awal. DPD merasa kewenangannya dalam Pasal 22D UUD 1945 diabaikan dan mengajukan sengketa kewenangan lembaga negara ke Mahkamah Konstitusi.',
+ dasar:'Pasal 24C ayat (1) UUD 1945 (MK memutus sengketa kewenangan lembaga negara); Pasal 20 dan Pasal 22D UUD 1945.',
+ R:[['H','Hakim Konstitusi',3,'Menilai batas kewenangan masing-masing lembaga.',null],
+ ['PEM','DPD (Pemohon)',1,'Menuntut kewenangannya dipulihkan.',[['Pasal 22D UUD 1945 memberi DPD kewenangan mengajukan dan ikut membahas RUU tentang pemekaran daerah. Pembahasan tanpa DPD mengabaikan kewenangan yang diberikan UUD.',2],['DPD adalah wakil daerah sehingga seharusnya didengar dalam segala hal.',1],['DPD berhak menolak RUU apa pun dan menghentikan pembahasannya di DPR.',0]]],
+ ['TER','DPR (Termohon)',1,'Menjawab bahwa pembahasan sudah sesuai kewenangan DPR.',[['Pasal 20 UUD 1945 memberi DPR kekuasaan membentuk UU, dan DPD telah diundang pada beberapa rapat awal. Kami tidak berniat menghilangkan peran DPD.',2],['DPR memegang kekuasaan membentuk UU, jadi DPR yang menentukan siapa yang dilibatkan.',1],['MK tidak berwenang memeriksa sengketa ini karena DPR lebih tinggi dari DPD.',0]]],
+ ['PRS','Presiden (Pihak Terkait)',1,'Menyampaikan sikap pemerintah dalam pembahasan RUU.',[['Pemerintah bersedia membahas RUU bersama DPR dan DPD sesuai UUD, dan meminta putusan MK memperjelas tata cara pelibatan DPD agar prosesnya tertib.',2],['Pemerintah hanya menunggu keputusan lembaga lain.',1],['Presiden dapat mengesahkan RUU tanpa pembahasan DPR bila DPR dan DPD berselisih.',0]]],
+ ['AHL','Ahli Hukum Tata Negara',1,'Menjelaskan sengketa kewenangan antar lembaga negara.',[['MK memeriksa sengketa bila kewenangan itu diberikan UUD. DPD dan DPR sama-sama lembaga yang kewenangannya diatur UUD, jadi MK menilai batas peran keduanya tanpa menganggap salah satunya lebih tinggi.',2],['Hubungan antar lembaga negara harus berlandaskan saling menghormati.',1],['MPR sebagai lembaga tertinggi yang harus memutus sengketa antar lembaga negara.',0]]],OB],
+ ST:[['Pembukaan sidang',[],'Hakim membuka sidang sengketa kewenangan.'],['Permohonan DPD',['PEM'],'DPD menyampaikan kewenangan yang dirugikan.'],['Jawaban DPR dan Presiden',['TER','PRS'],'DPR dan Presiden menjawab.'],['Keterangan ahli',['AHL','PEM','TER','PRS'],'Ahli menjelaskan; para pihak menanggapi.'],['Musyawarah dan putusan',[],'Hakim memberikan suara.']],
+ Q:['H'],V:['H'],VO:['Mengabulkan: DPD harus dilibatkan dalam pembahasan RUU itu','Menolak: tidak ada kewenangan DPD yang dilanggar','Tidak dapat diterima: MK tidak berwenang'],ID:0,
+ W:'Paling berdasar: dikabulkan. MK berwenang memutus sengketa kewenangan lembaga yang diberikan UUD. DPD ikut membahas RUU tertentu (otonomi daerah, hubungan pusat-daerah, pemekaran) bersama DPR dan Presiden, tetapi persetujuan akhir RUU tetap di tangan DPR dan Presiden. Lembaga negara kini sejajar, tidak ada yang tertinggi.'},
+{id:'kyhakim',t:'Calon Hakim Agung: KY, DPR, dan Presiden',f:'DPR',
+ ring:'Komisi Yudisial mengusulkan seorang calon hakim agung kepada DPR. Calon itu memiliki rekam jejak yang baik, sudah melaporkan harta kekayaan, dan menjelaskan laporan lama yang sempat dipersoalkan. Komisi III DPR menggelar uji kelayakan untuk memutuskan apakah calon disetujui.',
+ dasar:'Pasal 24A ayat (3) UUD 1945 (calon hakim agung diusulkan KY ke DPR untuk persetujuan, lalu ditetapkan Presiden); Pasal 24B UUD 1945.',
+ R:[['PIM','Pimpinan Komisi III DPR',1,'Memimpin uji kelayakan dan mengajukan pertanyaan.',null],
+ ['KY','Komisi Yudisial',1,'Menjelaskan proses seleksi dan alasan pengusulan.',[['Pasal 24B UUD 1945 memberi KY wewenang mengusulkan hakim agung. Calon ini lolos seleksi kualitas, kepribadian, dan rekam jejak, sehingga kami mengusulkannya kepada DPR.',2],['KY sudah bekerja keras menyeleksi calon selama berbulan-bulan.',1],['KY berhak langsung mengangkat calon sebagai hakim agung tanpa DPR.',0]]],
+ ['CAL','Calon Hakim Agung',1,'Menjawab pertanyaan DPR dan menyampaikan komitmen.',[['Saya telah melaporkan harta kekayaan dan mengklarifikasi laporan lama secara tertulis. Jika disetujui, saya menjaga independensi peradilan dari tekanan politik mana pun.',2],['Saya sudah puluhan tahun bertugas sebagai hakim.',1],['Saya akan memutus perkara sesuai kepentingan fraksi yang mendukung saya.',0]]],
+ ['FA','Anggota Komisi III DPR',2,'Menguji kelayakan calon mewakili rakyat.',[['DPR menguji karena persetujuannya diperlukan sebelum Presiden menetapkan hakim agung. Kami menilai integritas, kapasitas, dan komitmen independensi calon, bukan afiliasi politik.',2],['Hakim agung harus berpengalaman dan bersih.',1],['DPR boleh meminta calon memutus perkara tertentu sesuai kepentingan fraksi.',0]]],
+ ['PAK','Perwakilan Masyarakat Sipil',1,'Menyampaikan masukan publik atas calon.',[['Proses yang terbuka dan partisipatif menjaga kepercayaan publik. Calon perlu menjelaskan seluruh rekam jejaknya secara terbuka dan terukur.',2],['Kami berharap hakim agung benar-benar mandiri.',1],['Pilih saja calon yang paling terkenal di media.',0]]],OB],
+ ST:[['Pembukaan uji kelayakan',[],'Pimpinan membuka uji kelayakan calon hakim agung.'],['Pemaparan Komisi Yudisial',['KY'],'KY menjelaskan seleksi dan pengusulan.'],['Pemaparan calon',['CAL'],'Calon menyampaikan visi dan klarifikasi.'],['Tanggapan DPR dan masyarakat',['FA','PAK','KY','CAL'],'Anggota DPR dan masyarakat menanggapi.'],['Pengambilan keputusan',[],'Pimpinan dan anggota Komisi memberikan suara.']],
+ Q:['PIM'],V:['PIM','FA'],VO:['Setujui calon, lalu diserahkan kepada Presiden untuk ditetapkan','Tolak calon dan minta KY mengusulkan ulang','Tunda tanpa batas waktu'],ID:0,
+ W:'Paling tepat: calon disetujui lalu ditetapkan Presiden. Pengangkatan hakim agung melibatkan tiga lembaga: KY mengusulkan, DPR menyetujui, dan Presiden menetapkan. Karena itu tidak ada satu lembaga yang menentukan sendiri.'},
+{id:'perppu',t:'Rapat Paripurna: Perppu Bencana Nasional',f:'DPR',
+ ring:'Banjir bandang melanda 40 daerah. Presiden menerbitkan Perppu (fiktif) tentang penanganan darurat bencana karena UU yang ada belum memadai dan proses UU biasa tidak sempat ditempuh. Pada persidangan berikutnya, DPR harus memutuskan menyetujui atau menolak Perppu itu.',
+ dasar:'Pasal 22 UUD 1945 (Perppu pada kegentingan memaksa; harus mendapat persetujuan DPR pada persidangan berikutnya, jika ditolak harus dicabut).',
+ R:[['PIM','Pimpinan Rapat Paripurna',1,'Memimpin rapat dan mengajukan pertanyaan.',null],
+ ['MEN','Menteri (wakil Presiden)',1,'Menjelaskan alasan Presiden menerbitkan Perppu.',[['Presiden berwenang menetapkan Perppu menurut Pasal 22 UUD 1945 karena ada kegentingan memaksa: kebutuhan mendesak, UU belum memadai, dan proses biasa tidak sempat. Kami meminta persetujuan DPR.',2],['Perppu ini dibuat agar bantuan cepat sampai ke korban.',1],['Perppu berlaku selamanya tanpa perlu persetujuan DPR.',0]]],
+ ['FA','Anggota Fraksi Pendukung',2,'Mendukung Perppu.',[['Kami mendukung karena syarat kegentingan memaksa terpenuhi. DPR berwenang menyetujui Perppu pada persidangan berikutnya agar menjadi UU, sehingga kontrol atas Presiden tetap berjalan.',2],['Korban banjir perlu bantuan segera, jadi kami mendukung.',1],['Perppu tidak perlu dibahas, anggap saja sudah sah.',0]]],
+ ['FB','Anggota Fraksi Penolak',2,'Mengkritik Perppu dan meminta pengawasan ketat.',[['Kegentingan harus objektif, bukan sekadar penilaian pemerintah. Pasal yang membatasi hak harus dibatasi waktu dan diawasi, dan DPR hanya dapat menyetujui atau menolak Perppu itu.',2],['Kami menolak karena tidak percaya pada pemerintah.',1],['DPR dapat mengubah isi Perppu langsung tanpa menyetujui atau menolaknya.',0]]],
+ ['AHL','Ahli Hukum Tata Negara',1,'Menjelaskan hubungan Presiden dan DPR dalam Perppu.',[['Perppu setingkat UU tetapi bersifat sementara. DPR menguji syarat kegentingan memaksa lalu menyetujui atau menolak. Bila ditolak, Perppu harus dicabut, sehingga ada keseimbangan Presiden dan DPR.',2],['Keadaan darurat bencana memang membutuhkan keputusan cepat.',1],['DPR hanya boleh menyetujui; menolak Perppu tidak diperbolehkan.',0]]],OB],
+ ST:[['Pembukaan rapat',[],'Pimpinan membuka rapat paripurna.'],['Penjelasan Pemerintah',['MEN'],'Menteri menjelaskan Perppu.'],['Pandangan fraksi',['FA','FB'],'Fraksi menyampaikan pandangan.'],['Keterangan ahli dan tanggapan',['AHL','MEN','FA','FB'],'Ahli menjelaskan; peserta menanggapi.'],['Pengambilan keputusan',[],'Pimpinan dan anggota fraksi memberikan suara.']],
+ Q:['PIM'],V:['PIM','FA','FB'],VO:['Setujui Perppu menjadi UU','Tolak Perppu (harus dicabut)','Tunda tanpa batas waktu'],ID:0,
+ W:'Paling berdasar: disetujui, karena syarat kegentingan memaksa terpenuhi. Perppu ditetapkan Presiden, tetapi DPR mengawasi dengan hak menyetujui atau menolaknya pada persidangan berikutnya. DPR tidak mengubah isinya langsung.'},
+{id:'bpk',t:'Tindak Lanjut Hasil Pemeriksaan BPK di DPR',f:'DPR',
+ ring:'BPK menyerahkan laporan hasil pemeriksaan kepada DPR: sebuah kementerian (fiktif) memiliki belanja perjalanan dinas bermasalah senilai Rp90 miliar dengan indikasi unsur pidana. Kementerian menyampaikan sebagian temuan keliru. Komisi DPR harus menentukan tindak lanjutnya.',
+ dasar:'Pasal 23E UUD 1945 (BPK memeriksa keuangan negara, hasilnya diserahkan kepada DPR, DPD, dan DPRD; ditindaklanjuti oleh lembaga perwakilan dan instansi berwenang).',
+ R:[['PIM','Pimpinan Komisi DPR',1,'Memimpin rapat dan mengajukan pertanyaan.',null],
+ ['BPK','Anggota BPK',1,'Menyampaikan hasil pemeriksaan.',[['Pasal 23E UUD 1945 memberi BPK wewenang memeriksa pengelolaan dan tanggung jawab keuangan negara. Hasilnya diserahkan kepada DPR, dan temuan unsur pidana disampaikan kepada instansi berwenang.',2],['BPK sudah memeriksa dengan teliti dan temuannya sesuai fakta.',1],['BPK berwenang langsung menghukum pejabat yang dianggap bersalah.',0]]],
+ ['MEN','Menteri / Pejabat Kementerian',1,'Menanggapi temuan BPK.',[['Kementerian menghormati hasil pemeriksaan dan siap menindaklanjuti rekomendasi, sambil menyampaikan klarifikasi dan bukti pendukung atas temuan yang dianggap belum tepat.',2],['Kesalahan terjadi karena prosedur administrasi yang rumit.',1],['Temuan BPK tidak perlu dilaksanakan karena kementerian berada di bawah Presiden.',0]]],
+ ['FA','Anggota Komisi DPR',2,'Menjalankan fungsi pengawasan DPR.',[['DPR menjalankan fungsi pengawasan: rekomendasi BPK dibahas komisi, kementerian diminta menindaklanjuti dalam batas waktu, dan temuan pidana diserahkan ke penegak hukum.',2],['Uang negara harus dipakai pejabat dengan jujur.',1],['DPR langsung memvonis menteri bersalah dalam rapat ini.',0]]],
+ ['KEJ','Perwakilan Aparat Penegak Hukum',1,'Menjelaskan tindak lanjut temuan pidana.',[['Temuan BPK yang mengandung unsur pidana dapat menjadi dasar penyelidikan. Pembuktian dan penetapan tersangka tetap melalui hukum acara pidana dan peradilan.',2],['Kami siap bekerja sama dengan BPK dan DPR.',1],['Aparat hukum harus menunggu persetujuan DPR sebelum menyelidiki.',0]]],OB],
+ ST:[['Pembukaan rapat',[],'Pimpinan membuka rapat pengawasan.'],['Penyerahan hasil pemeriksaan',['BPK'],'BPK menyampaikan temuan.'],['Tanggapan kementerian',['MEN'],'Kementerian menanggapi temuan.'],['Rapat pengawasan DPR',['FA','KEJ','BPK','MEN'],'Anggota DPR dan penegak hukum membahas tindak lanjut.'],['Keputusan rekomendasi',[],'Pimpinan dan anggota Komisi memberikan suara.']],
+ Q:['PIM'],V:['PIM','FA'],VO:['Terima hasil pemeriksaan: kementerian wajib menindaklanjuti dan temuan pidana diserahkan ke penegak hukum','Tolak hasil pemeriksaan karena dianggap bermasalah','Abaikan sampai pergantian menteri'],ID:0,
+ W:'Paling tepat: hasil pemeriksaan diterima dan ditindaklanjuti. BPK memeriksa dan melapor, DPR mengawasi dan merekomendasikan, penegak hukum menyelidiki, dan hakim memutus. BPK dan DPR tidak menjatuhkan hukuman pidana.'}
+];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+let db=null,user=null,myId=null,canEdit=false,canWrite=null,G={status:'lobby'},P=[],M=[],me=null,unsub=null,subSid=null,tab='berkas',says=0,qs=0,order={},chain=Promise.resolve();
+const cs=()=>C.find(c=>c.id===G.caseId),role=(c,id)=>c.R.find(r=>r[0]===id),stg=()=>G.stage||0;
+const col=(c,id)=>{const i=c.R.findIndex(r=>r[0]===id);return id==='O'?'#6B7280':PAL[i%PAL.length]};
+const badge=(c,id,n)=>`<span class="badge" style="background:${col(c,id)}">${esc(n)}</span>`;
+const inSid=p=>p.sid===G.sid&&p.role;
+const save=patch=>{Object.assign(me,patch);chain=chain.then(()=>db.doc('players/'+myId).update(patch)).catch(()=>{})};
+const add=(kind,text)=>{const c=cs(),r=role(c,me.role);return db.collection('chat/'+G.sid+'/m').add({uid:myId,name:me.name,role:me.role,rn:r[1],kind,text,ts:Date.now()}).catch(()=>{})};
+const sys=text=>db.collection('chat/'+G.sid+'/m').add({kind:'sys',text,ts:Date.now(),uid:'sys',name:'',role:'',rn:''}).catch(()=>{});
+
+function tally(){const c=cs();const v=P.filter(p=>inSid(p)&&c.V.includes(p.role)&&p.vote!=null);const n=c.VO.map(()=>0);v.forEach(p=>n[p.vote]++);const mx=Math.max(...n);const w=n.indexOf(mx);return{n,tot:v.length,win:mx>0&&n.filter(x=>x===mx).length===1?w:-1}}
+
+function renderHead(){
+ const c=cs();if(!c){$('head').textContent='Menunggu guru membuka sidang.';return}
+ $('head').innerHTML=`<h2 style="color:var(--ink);font-size:1.2rem">${esc(c.t)}</h2><div class="steps">${c.ST.map((s,i)=>`<span class="stp ${i===stg()?'on':i<stg()?'done':''}">${i+1}. ${s[0]}</span>`).join('')}</div>`;
+}
+function renderCtl(){
+ const el=$('ctl');if(!canEdit||!db){el.innerHTML='';return}
+ const c=cs(),last=c&&stg()>=c.ST.length-1;
+ el.innerHTML=`<div class="card row" style="margin-bottom:12px"><b>Panel guru</b><span class="mut sm">${P.length} peserta</span>
+ <select id="pk">${C.map(x=>`<option value="${x.id}" ${G.caseId===x.id?'selected':''}>${x.t}</option>`).join('')}</select>
+ <button class="btn" id="open">Buka sidang baru</button>
+ <button class="btn alt" id="nxt" ${!c||G.status!=='live'||last?'disabled':''}>Tahap berikutnya</button>
+ <button class="btn alt" id="vdb" ${!c||G.status!=='live'||!last?'disabled':''}>Bacakan putusan</button>
+ <button class="btn alt" id="rst">Reset semua</button></div>`;
+ $('open').onclick=async()=>{const id=$('pk').value,sid='s'+Date.now();
+  await db.doc('game/state').set({caseId:id,sid,stage:0,status:'live'}).catch(e=>alert(e.message));
+  const x=C.find(k=>k.id===id);G.sid=sid;await sys('Sidang dibuka: '+x.t+'. Tahap 1: '+x.ST[0][0]+'. '+x.ST[0][2])};
+ $('nxt').onclick=async()=>{const n=stg()+1;await db.doc('game/state').update({stage:n});await sys('Tahap '+(n+1)+': '+c.ST[n][0]+'. '+c.ST[n][2])};
+ $('vdb').onclick=async()=>{await db.doc('game/state').update({status:'verdict'});await sys('Putusan dibacakan.')};
+ $('rst').onclick=async()=>{if(!confirm('Hapus semua peserta, skor, dan peran?'))return;await db.doc('game/state').set({status:'lobby'}).catch(()=>{});for(const p of P){try{await db.doc('players/'+p.id).delete()}catch(e){}}};
+}
+function renderVerdict(){
+ const el=$('vd'),c=cs();if(!c||G.status!=='verdict'){el.innerHTML='';return}
+ const t=tally();
+ el.innerHTML=`<div class="card vd"><p class="mut sm" style="margin:0">Putusan majelis</p><div class="big">${t.win<0?'Suara imbang: belum ada putusan':esc(c.VO[t.win])}</div>
+ <p class="sm mut">${c.VO.map((o,i)=>`${esc(o)}: ${t.n[i]}`).join(' · ')}</p><p><b>Catatan pembelajaran:</b> ${esc(c.W)}</p></div>`;
+}
+function renderPlay(){
+ const el=$('play'),c=cs();
+ if(!db||!user){el.innerHTML=`<div class="card"><h2>Buka lewat tautan sesi</h2><p class="mut">Game ini perlu masuk ke akun agar sidang tersambung antar siswa. Buka tautan dari guru dengan akun yang sudah masuk.</p></div>`;return}
+ if(canWrite===false){el.innerHTML=`<div class="note"><b>Akses hanya melihat.</b> Kamu bisa menonton sidang, tetapi belum bisa ikut. Minta guru memberi akses Kontributor.</div>`;return}
+ if(!me){el.innerHTML=`<div class="card"><h2>Masuk ruang sidang</h2><p class="mut">Pakai nama panggilan yang dikenali teman sekelas.</p><div class="row" style="margin-top:8px"><input type="text" id="nm" maxlength="16" placeholder="Nama panggilan" autocomplete="off" style="flex:1;min-width:150px"><button class="btn" id="join">Masuk</button></div></div>`;
+  const j=async()=>{const n=$('nm').value.trim().slice(0,16);if(!n){$('nm').focus();return}const d={name:n,score:0,seen:Date.now()};try{await db.doc('players/'+myId).set(d);me=d;renderPlay()}catch(e){alert('Gagal masuk: '+e.message)}};
+  $('join').onclick=j;$('nm').onkeydown=e=>{if(e.key==='Enter')j()};return}
+ if(!c||G.status==='lobby'){el.innerHTML=`<div class="card"><h2>Halo, ${esc(me.name)}</h2><p>Menunggu guru membuka sidang. Skor kamu: ${me.score}.</p></div>`;return}
+ if(me.sid!==G.sid||!me.role){
+  el.innerHTML=`<div class="card"><h2>Pilih perananmu</h2><p class="mut sm">${esc(c.f)}: ${esc(c.t)}. Peran yang sudah penuh tidak bisa dipilih.</p>`+c.R.map(r=>{const u=P.filter(p=>inSid(p)&&p.role===r[0]).length,full=u>=r[2];
+   return `<button class="role" data-r="${r[0]}" ${full?'disabled':''}><b>${badge(c,r[0],r[1])}</b><small>${esc(r[3])}</small><small>${full?'Penuh':r[2]>50?'Tidak terbatas':'Sisa '+(r[2]-u)+' tempat'}</small></button>`}).join('')+`</div>`;
+  el.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{const r=role(c,b.dataset.r);order[r[0]]=r[4]?shuffle(r[4].map((_,i)=>i)):[];says=0;qs=0;
+   me.sid=G.sid;me.role=r[0];me.used=[];me.vote=null;chain=chain.then(()=>db.doc('players/'+myId).update({sid:G.sid,role:r[0],used:[],vote:null,awd:null,seen:Date.now()})).catch(()=>{});
+   add('sys',me.name+' bergabung sebagai '+r[1]+'.');renderPlay()});
+  return}
+ const r=role(c,me.role),st=c.ST[stg()],last=stg()===c.ST.length-1,live=G.status==='live',used=me.used||[];
+ let h=`<div class="card"><div class="row" style="justify-content:space-between"><span>${badge(c,r[0],r[1])}</span><span class="mut sm">Skor ${me.score}</span></div>`;
+ if(!live)h+=`<p class="sm mut">Sidang sudah diputus. Kamu masih bisa berkomentar.</p>`;
+ if(live&&r[4]){
+  if(st[1].includes(r[0])){const left=order[r[0]]?.filter(i=>!used.includes(i))||[];
+   h+=`<p class="sm" style="margin-bottom:0"><b>Gilirannya ${esc(r[1])}.</b> Pilih pembelaanmu:</p>`+(left.length?left.map(i=>`<button class="opt" data-a="${i}">${esc(r[4][i][0])}</button>`).join(''):`<p class="mut sm">Semua pembelaanmu sudah disampaikan.</p>`)}
+  else h+=`<p class="sm mut">Belum giliranmu bicara pada tahap "${esc(st[0])}".</p>`}
+ if(live&&c.Q.includes(r[0])&&!last)h+=`<p class="sm" style="margin-bottom:0"><b>Ajukan pertanyaan kepada para pihak:</b></p>`+QS.map((q,i)=>`<button class="opt" data-q="${i}">${esc(q)}</button>`).join('');
+ if(live&&c.V.includes(r[0])){
+  if(last)h+=`<p class="sm" style="margin-bottom:0"><b>Berikan suaramu:</b> ${me.vote!=null?'Suaramu tercatat dan bisa diubah sebelum putusan dibacakan.':''}</p>`+c.VO.map((o,i)=>`<button class="opt" data-v="${i}" ${me.vote===i?'style="border-color:var(--red)"':''}>${esc(o)}</button>`).join('');
+  else h+=`<p class="sm mut">Pemungutan suara dibuka pada tahap terakhir.</p>`}
+ h+=`<div id="fb"></div><div class="row" style="margin-top:10px"><input type="text" id="msg" maxlength="200" placeholder="Tulis komentar bebas..." style="flex:1;min-width:150px" autocomplete="off"><button class="btn" id="say">Kirim</button></div></div>`;
+ el.innerHTML=h;
+ el.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{const i=+b.dataset.a,o=r[4][i],pt=[2,8,15][o[1]];add('arg',o[0]);
+  save({score:me.score+pt,used:[...used,i]});
+  const f=['Lemah atau keliru secara ketatanegaraan; hakim akan mempertanyakannya.','Cukup, tetapi belum menyebut dasar hukum atau kewenangan yang tepat.','Kuat: dasar hukum dan kewenangan tepat.'][o[1]];
+  renderPlay();$('fb').innerHTML=`<div class="fb k${o[1]}"><b>+${pt} poin.</b> ${f}</div>`});
+ el.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{add('q',QS[+b.dataset.q]);if(qs<5){qs++;save({score:me.score+3})}renderPlay()});
+ el.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{save({vote:+b.dataset.v});renderPlay()});
+ const send=()=>{const t=$('msg').value.trim();if(!t)return;add('say',t);if(says<5){says++;save({score:me.score+1})}$('msg').value=''};
+ $('say').onclick=send;$('msg').onkeydown=e=>{if(e.key==='Enter')send()};
+}
+function renderChat(){
+ const el=$('chat'),c=cs(),near=el.scrollHeight-el.scrollTop-el.clientHeight<90;
+ const ms=M.filter(m=>m.text);
+ el.innerHTML=ms.map(m=>m.kind==='sys'?`<div class="sys">${esc(m.text)}</div>`:`<div class="msg ${m.uid===myId?'mine':''}">${c?badge(c,m.role,m.rn):''} <b>${esc(m.name)}</b><div class="bub ${m.kind}">${m.kind==='q'?'Pertanyaan: ':''}${esc(m.text)}</div></div>`).join('')||`<p class="mut">Percakapan sidang akan muncul di sini.</p>`;
+ if(near)el.scrollTop=el.scrollHeight;
+}
+function renderSide(){
+ $('tabs').innerHTML=[['berkas','Berkas'],['peran','Peran'],['skor','Skor']].map(t=>`<button class="tab" role="tab" data-t="${t[0]}" aria-selected="${tab===t[0]}">${t[1]}</button>`).join('');
+ $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.t;renderSide()});
+ const el=$('side'),c=cs();
+ if(tab==='skor'){const s=[...P].sort((a,b)=>b.score-a.score).slice(0,15);
+  el.innerHTML=s.length?s.map((p,i)=>`<div class="rk ${p.id===myId?'me':''}"><b>${i+1}</b><span>${esc(p.name)}</span><b>${p.score}</b></div>`).join(''):`<p class="mut">Belum ada peserta.</p>`;return}
+ if(!c){el.innerHTML=`<p class="mut">Berkas perkara akan muncul setelah guru membuka sidang.</p>`;return}
+ if(tab==='berkas'){const st=c.ST[stg()];el.innerHTML=`<h3>${esc(c.t)}</h3><p>${esc(c.ring)}</p><p class="sm"><b>Dasar hukum:</b> ${esc(c.dasar)}</p><div class="fb k1"><b>Tahap ${stg()+1}: ${esc(st[0])}</b><br>${esc(st[2])}</div>`;return}
+ el.innerHTML=c.R.map(r=>{const ps=P.filter(p=>inSid(p)&&p.role===r[0]);return `<div class="rr">${badge(c,r[0],r[1])}<br><span class="${ps.length?'':'mut'}">${ps.map(p=>esc(p.name)+(c.V.includes(r[0])&&p.vote!=null?' (sudah memilih)':'')).join(', ')||'Belum terisi'}</span></div>`}).join('');
+}
+function award(){const c=cs();if(!c||!me||G.status!=='verdict'||me.sid!==G.sid||me.awd===G.sid||!c.V.includes(me.role))return;
+ save({awd:G.sid,score:me.score+(me.vote===c.ID?30:me.vote!=null?5:0)})}
+function subscribe(){
+ if(subSid===G.sid)return;if(unsub)unsub();subSid=G.sid;M=[];if(!G.sid){renderChat();return}
+ unsub=db.collection('chat/'+G.sid+'/m').orderBy('ts','desc').limit(120).onSnapshot(q=>{M=q.docs.map(d=>d.data()).reverse();renderChat()},()=>{});
+}
+(async()=>{
+ renderSide();renderHead();renderChat();renderPlay();
+ if(FB.apiKey.startsWith('ISI')){$('play').innerHTML='<div class="note"><b>Firebase belum diatur.</b> Buka index.html, isi FB dan GURU_PIN di bagian atas script, lalu unggah ulang.</div>';return}
+ try{firebase.initializeApp(FB);await firebase.auth().signInAnonymously();db=firebase.firestore();myId=firebase.auth().currentUser.uid;user={}}
+ catch(e){$('play').innerHTML='<div class="note"><b>Gagal terhubung ke Firebase.</b> '+esc(e.message)+'</div>';return}
+ try{canEdit=localStorage.getItem('guru')===GURU_PIN}catch(e){}
+ $('gl').onclick=ev=>{ev.preventDefault();const p=prompt('Masukkan PIN guru:');if(p===GURU_PIN){canEdit=true;try{localStorage.setItem('guru',p)}catch(e){}renderCtl()}else if(p!==null)alert('PIN salah.')};
+ renderCtl();renderPlay();
+ db.doc('game/state').onSnapshot(s=>{const old=G;G=s.exists?s.data():{status:'lobby'};subscribe();renderHead();renderCtl();renderVerdict();renderSide();if(me&&(old.sid!==G.sid||old.status!==G.status||old.stage!==G.stage))renderPlay();else if(!me)renderPlay();award();renderChat()},()=>{});
+ db.collection('players').onSnapshot(q=>{P=q.docs.map(d=>({id:d.id,...d.data()}));const own=P.find(p=>p.id===myId);
+  if(own&&!me){me={...own};renderPlay()}else if(!own&&me&&G.status==='lobby'){me=null;renderPlay()}
+  if(me&&(me.sid!==G.sid||!me.role))renderPlay();
+  renderSide();renderCtl();if(G.status==='verdict')renderVerdict()},()=>{});
+})();
+</script>
+</body>
+</html>
